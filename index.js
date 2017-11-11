@@ -1,12 +1,12 @@
 // P1: find all the words that are anagrams of “least.”  (There will be 4 words in this set, including “least” itself).
 
-let value = 'least';
+let value1 = 'least';
 function sortValue(str) {
     return str.split('').sort().join('');
 }
-let valueSort = sortValue(value);
+let valueSort1 = sortValue(value1);
 let answer1 = words.filter(function(x){
-      return sortValue(x) == valueSort;
+      return sortValue(x) == valueSort1;
 });
 console.log(answer1);
 
