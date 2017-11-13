@@ -36,18 +36,18 @@ console.log(dictionary2);
 
 // P3: Allow the user to enter text in a text field and search for all the words that are anagrams of it.
 let input = document.getElementById('input');
-let value = input.value;
 function sortValue(str) {
     return str.split('').sort().join('');
 }
-let valueSort = sortValue(value);
 function handleWord(){
+  let valueSort = sortValue(input.value);
   let answer1 = words.filter(function(x){
         return sortValue(x) == valueSort;
   });
+  console.log(answer1);
 };
 
-console.log(answer1);
+
 
 // P4: Allow the user to enter a word or phrase in a text field and search for two-word anagrams (ignoring spaces). Some examples:
 // 	declan vea
