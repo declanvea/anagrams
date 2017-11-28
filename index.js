@@ -51,13 +51,12 @@ console.log(objectKeys);
 function handleWord2(){
   let sortedInput = sortValue(input2.value);
   console.log(sortedInput);
-  console.log(sortedInput.length);
   let results = [];
   for (let i = 0; i < objectKeys.length - 1; i++) {
     for (let j = i + 1; j < objectKeys.length; j++) {
       if(sortedInput.length === (objectKeys[i].length + objectKeys[j].length)){
       if(sortedInput === (sortValue(objectKeys[i]+objectKeys[j]))){
-      results.push(`[${objectKeys[i]}] +  [${objectKeys[j]}]`);
+      results.push(`${dictionary[objectKeys[i]]} +  ${dictionary[objectKeys[j]]}`);
       }
     }
   }
