@@ -52,22 +52,40 @@ function handleWord2(){
   let sortedInput = sortValue(input2.value);
   console.log(sortedInput);
   console.log(sortedInput.length);
-  let filterKeys = [];
-  for (let i = 0; i < objectKeys.length; i++) {
-    let objectI = objectKeys[i];
-    for (let j = 0; j < objectI.length; j++) {
-      let objectIJ = objectI[j];
-      if(sortedInput.indexOf(objectIJ) !== -1){
-        filterKeys.push(objectIJ);
-      } else {
-        j++;
+  let results = [];
+  for (let i = 0; i < objectKeys.length - 1; i++) {
+    for (let j = i + 1; j < objectKeys.length; j++) {
+      if(sortedInput.length === (objectKeys[i].length + objectKeys[j].length)){
+      if(sortedInput === (sortValue(objectKeys[i]+objectKeys[j]))){
+      results.push(`[${objectKeys[i]}] +  [${objectKeys[j]}]`);
       }
     }
   }
-  console.log(filterKeys);
+}
+console.log(results);
 };
 
-
+// ---------------------------------------------------------------
+// works in repl.it
+// function sortValue(str) {
+//     return str.toLowerCase().split('').sort().join('').trim();
+// }
+// let phrase = 'god naroge';
+// let sortedPhrase = sortValue(phrase);
+// console.log(sortedPhrase);
+//
+// let array = ['car', 'cat', 'dog', 'cow', 'pet', 'orange', 'toast'];
+//
+// let results = [];
+// for (let i = 0; i < array.length - 1; i++) {
+//   for (let j = i + 1; j < array.length; j++) {
+//     if(sortedPhrase === (sortValue(array[i]+array[j]))){
+//     results.push(array[i],array[j]);
+//     }
+//   }
+// }
+// console.log(results);
+// ---------------------------------------------------------------
 
 // P5: Search for three-word anagrams of a user-provided phrase. For example:
 // 	maricris tejada
