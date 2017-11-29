@@ -51,40 +51,36 @@ console.log(objectKeys);
 function handleWord2(){
   let sortedInput = sortValue(input2.value);
   console.log(sortedInput);
+    let filterKeys = [];
+     for (let i = 0; i < objectKeys.length; i++) {
+       let objectI = objectKeys[i];
+       for (let j = 0; j < objectI.length; j++) {
+         let objectIJ = objectI[j];
+         if(sortedInput.indexOf(objectIJ) === -1){
+           break;
+         }
+         filterKeys.push(objectI);
+         break;
+       }
+   }
+   console.log(filterKeys);
+
+  // let test = [];
   let results = [];
-  for (let i = 0; i < objectKeys.length - 1; i++) {
-    for (let j = i + 1; j < objectKeys.length; j++) {
-      if(sortedInput.length === (objectKeys[i].length + objectKeys[j].length)){
-      if(sortedInput === (sortValue(objectKeys[i]+objectKeys[j]))){
-      results.push(`${dictionary[objectKeys[i]]} +  ${dictionary[objectKeys[j]]}`);
+  for (let i = 0; i < filterKeys.length - 1; i++) {
+    for (let j = i + 1; j < filterKeys.length; j++) {
+        if(sortedInput.length === (filterKeys[i].length + filterKeys[j].length)){
+          // test.push(sortValue(filterKeys[i] + filterKeys[j]));
+          if(sortedInput === (sortValue(filterKeys[i] + filterKeys[j]))){
+            results.push(`${dictionary[filterKeys[i]]} + ${dictionary[filterKeys[j]]}`);
+          }
+        }
       }
     }
-  }
-}
+// console.log(test);
 console.log(results);
 };
 
-// ---------------------------------------------------------------
-// works in repl.it
-// function sortValue(str) {
-//     return str.toLowerCase().split('').sort().join('').trim();
-// }
-// let phrase = 'god naroge';
-// let sortedPhrase = sortValue(phrase);
-// console.log(sortedPhrase);
-//
-// let array = ['car', 'cat', 'dog', 'cow', 'pet', 'orange', 'toast'];
-//
-// let results = [];
-// for (let i = 0; i < array.length - 1; i++) {
-//   for (let j = i + 1; j < array.length; j++) {
-//     if(sortedPhrase === (sortValue(array[i]+array[j]))){
-//     results.push(array[i],array[j]);
-//     }
-//   }
-// }
-// console.log(results);
-// ---------------------------------------------------------------
 
 // P5: Search for three-word anagrams of a user-provided phrase. For example:
 // 	maricris tejada
