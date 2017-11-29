@@ -89,3 +89,36 @@ console.log(results);
 // (again just a few examples, your function should find many more solutions)
 //
 // Uses: Iteration, conditionals, String manipulation, nested control flow, arrays and dictionaries
+function handleWord3(){
+  let sortedInput = sortValue(input3.value);
+  console.log(sortedInput);
+    let filterKeys = [];
+     for (let i = 0; i < objectKeys.length; i++) {
+       let objectI = objectKeys[i];
+       total = 0;
+       for (let j = 0; j < objectI.length; j++) {
+         let objectIJ = objectI[j];
+         if(sortedInput.indexOf(objectIJ) === -1){
+           total++;
+         }
+       }
+       if(total === 0){
+       filterKeys.push(objectI);
+     }
+   }
+   console.log(filterKeys);
+
+  let results = [];
+  for (let i = 0; i < filterKeys.length - 1; i++) {
+    for (let j = i + 1; j < filterKeys.length; j++) {
+      for (let n = j + 1; n < filterKeys.length; n++) {
+        if(sortedInput.length === (filterKeys[i].length + filterKeys[j].length + filterKeys[n].length)){
+          if(sortedInput === (sortValue(filterKeys[i] + filterKeys[j] + filterKeys[n]))){
+            results.push(`${dictionary[filterKeys[i]]} + ${dictionary[filterKeys[j]]} + ${dictionary[filterKeys[n]]}`);
+            }
+          }
+        }
+      }
+    }
+console.log(results);
+};
