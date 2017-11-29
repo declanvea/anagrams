@@ -54,30 +54,29 @@ function handleWord2(){
     let filterKeys = [];
      for (let i = 0; i < objectKeys.length; i++) {
        let objectI = objectKeys[i];
+       total = 0;
        for (let j = 0; j < objectI.length; j++) {
          let objectIJ = objectI[j];
          if(sortedInput.indexOf(objectIJ) === -1){
-           break;
+           total++;
          }
-         filterKeys.push(objectI);
-         break;
        }
+       if(total === 0){
+       filterKeys.push(objectI);
+     }
    }
    console.log(filterKeys);
 
-  // let test = [];
   let results = [];
   for (let i = 0; i < filterKeys.length - 1; i++) {
     for (let j = i + 1; j < filterKeys.length; j++) {
         if(sortedInput.length === (filterKeys[i].length + filterKeys[j].length)){
-          // test.push(sortValue(filterKeys[i] + filterKeys[j]));
           if(sortedInput === (sortValue(filterKeys[i] + filterKeys[j]))){
             results.push(`${dictionary[filterKeys[i]]} + ${dictionary[filterKeys[j]]}`);
           }
         }
       }
     }
-// console.log(test);
 console.log(results);
 };
 
